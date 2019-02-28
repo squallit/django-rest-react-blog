@@ -13,9 +13,10 @@ class ArticleList extends React.Component {
         this.setState({
           articles: res.data
         });
-        console.log(res.data);
       })
+    console.log("Component Mounted!!!");
   }
+
 
 
   render() {
