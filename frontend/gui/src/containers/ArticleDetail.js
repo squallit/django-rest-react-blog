@@ -18,16 +18,13 @@ class ArticleDetail extends React.Component {
   onDeleteConfirm = (event) => {
     //event.preventDefault();
     const articleID = this.props.match.params.articleID;
-    console.log(articleID);
     axios.delete(`http://127.0.0.1:8000/api/${articleID}/`);
     // //redirect to home
     this.props.history.push('/');
-    // console.log(this.state.article);
+
   }
 
-  // onDeleteCancel(e) {
-  //   console.log(e);
-  // }
+
 
 
 

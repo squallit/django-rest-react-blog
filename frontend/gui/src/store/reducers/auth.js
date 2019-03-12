@@ -4,10 +4,11 @@ import { updateObject } from '../actions/utility';
 const initialState = {
     token: null,
     error: null,
-    loading: false
+    loading: false,
 }
 
 const authStart = (state, action) => {
+    console.log('Auth Start');
     return updateObject(state, {
         error: null,
         loading: true
@@ -15,6 +16,7 @@ const authStart = (state, action) => {
 }
 
 const authSuccess = (state, action) => {
+    console.log('Auth Success');
     return updateObject(state, {
         token: action.token,
         error: null,
@@ -23,6 +25,7 @@ const authSuccess = (state, action) => {
 }
 
 const authFail = (state, action) => {
+    console.log('Auth Failed');
     return updateObject(state, {
         error: action.error,
         loading: false
@@ -30,12 +33,13 @@ const authFail = (state, action) => {
 }
 
 const authLogout = (state, action) => {
+    console.log('Auth Logout');
     return updateObject(state, {
         token: null
     });
 }
 
-const reducer = (state=initialState, action) => {
+const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.AUTH_START: return authStart(state, action);
         case actionTypes.AUTH_SUCCESS: return authSuccess(state, action);

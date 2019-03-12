@@ -13,7 +13,6 @@ class CustomForm extends React.Component {
      // event.preventDefault();
     const title = event.target.elements.title.value;
     const content = event.target.elements.content.value;
-    console.log(title, content, requestType, articleID);
 
     switch(requestType) {
       case 'post':
