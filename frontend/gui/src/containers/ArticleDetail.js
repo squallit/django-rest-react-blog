@@ -1,8 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import { Card, Button, Popconfirm, message } from 'antd';
+import AuthRequest from '../components/AuthRequest';
 import CustomForm from '../components/CustomForm';
 import { withRouter } from 'react-router';
+import { connect } from 'react-redux';
 
 
 
@@ -25,20 +27,28 @@ class ArticleDetail extends React.Component {
   }
 
 
-
-
-
   componentDidMount() {
-    const articleID = this.props.match.params.articleID;
-    axios.get(`http://127.0.0.1:8000/api/${articleID}`)
-      .then(res => {
-        this.setState({
-          article: res.data
-        });
-      })
+      if (this.props.token) {
 
+        axios.defaults.headers = {
+        "Content-Type": "application/json",
+        Authorization: `Token ${this.props.token}`
+        };
 
+        // Retrieve all articles
+        const articleID = this.props.match.params.articleID;
+        axios.get(`http://127.0.0.1:8000/api/${articleID}`)
+          .then(res => {
+            this.setState({
+              article: res.data
+            });
+          })
+
+      }
   }
+
+
+
 
 
   // <form onSubmit={this.onDeleteConfirm}>
@@ -55,28 +65,46 @@ class ArticleDetail extends React.Component {
   // </Popconfirm>
 
   render() {
-    return (
-      <div>
-        <Card title={this.state.article.title} >
-          <p>{this.state.article.content}</p>
-        </Card>
-        <br/>
-        <center>
-          <Popconfirm title="Are you sure delete this article?"
-            onConfirm={this.onDeleteConfirm}
-            okText="Yes"
-            cancelText="No">
-          <a href="#"><Button type="danger">Delete This Article</Button></a>
-          </Popconfirm>
-        </center>
-        <br/>
-        <br/>
-        <h1>Update An Article</h1>
-        <CustomForm requestType="put" articleID={this.props.match.params.articleID} buttonText="Update" />
-      </div>
-    )
+      //Prompt a request to login or signup screen if not logged in
+      if (this.props.token) {
+        return (
+          <div>
+            <Card title={this.state.article.title} >
+              <p>{this.state.article.content}</p>
+            </Card>
+            <br/>
+            <center>
+              <Popconfirm title="Are you sure delete this article?"
+                onConfirm={this.onDeleteConfirm}
+                okText="Yes"
+                cancelText="No">
+              <a href="#"><Button type="danger">Delete This Article</Button></a>
+              </Popconfirm>
+            </center>
+            <br/>
+            <br/>
+            <h1>Update An Article</h1>
+            <CustomForm requestType="put" articleID={this.props.match.params.articleID} buttonText="Update" />
+          </div>
+        )
+      } else {
+        return (
+          <AuthRequest />
+        )
+      }
+  }
+
+
+}
+
+const mapStateToProps = state => {
+  return {
+    token: state.auth.token,
   }
 }
 
 
-export default withRouter(ArticleDetail);
+export default connect(mapStateToProps)(ArticleDetail);
+
+
+//export default withRouter(ArticleDetail);

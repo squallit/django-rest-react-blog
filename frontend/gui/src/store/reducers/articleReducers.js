@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
-import {fetchArticles} from '../actions/articles';
+import {fetchArticles} from '../actions/articleActions';
 import { updateObject } from '../actions/utility';
 
 

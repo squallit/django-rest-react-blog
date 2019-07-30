@@ -1,6 +1,7 @@
 import React from 'react';
 import Articles from '../components/Articles';
-import {fetchArticles, unfetchArticles} from '../store/actions/articles';
+import AuthRequest from '../components/AuthRequest';
+import {fetchArticles, unfetchArticles} from '../store/actions/articleActions';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import axios from 'axios';
@@ -34,9 +35,18 @@ class ArticleList extends React.Component {
 
 
   render() {
-    return (
-      <Articles data={this.props.articles}/>
-    )
+    console.log(this.props.articles);
+
+    //Prompt a request to login or signup screen
+    if (this.props.token) {
+      return (
+        <Articles data={this.props.articles}/>
+      )
+    } else {
+      return (
+        <AuthRequest />
+      )
+    }
   }
 }
 

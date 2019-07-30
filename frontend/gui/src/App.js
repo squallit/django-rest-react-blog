@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import 'antd/dist/antd.css';
 import { connect } from 'react-redux';
-import * as actions from './store/actions/auth';
+import * as actions from './store/actions/authActions';
 
 
 import CustomLayout from './containers/Layout';
