@@ -18,6 +18,8 @@ class App extends Component {
     this.props.onTryAutoSignup();
   }
 
+  //{...this.props} Transfer all parent's props to child's props
+  // CustomLayout isAuthenticated={this.props.isAuthenticated}
   render() {
     return (
       <div className="App">

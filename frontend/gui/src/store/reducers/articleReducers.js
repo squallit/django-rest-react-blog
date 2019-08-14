@@ -9,7 +9,8 @@ import { updateObject } from '../actions/utility';
 export default function(state = [], action) {
   switch (action.type) {
     case actionTypes.FETCH_ARTICLES:
-      return action.payload.data;
+      //reverse the array of data, so the lastest article will appear first
+      return action.payload.data.reverse();
     case actionTypes.UNFETCH_ARTICLES:
       return [];
   }

@@ -8,6 +8,17 @@ import { connect } from 'react-redux';
 const { Header, Content, Footer } = Layout;
 
 class CustomLayout extends React.Component {
+
+  //this.props.children represents
+  // <Route exact path='/' component={ArticleList} />
+  // <Route exact path='/articleDetail/:articleID' component={ArticleDetail} />
+  // <Route exact path='/new' component={ArticleCreate} />
+  // <Route exact path='/login/' component={Login} />
+  // <Route exact path='/signup/' component={Signup} />
+
+
+
+
   render() {
     return (
       <Layout className="layout">
@@ -66,14 +77,9 @@ class CustomLayout extends React.Component {
             </div>
 
 
-
-
-
-
-
         </Content>
         <Footer style={{ textAlign: 'center' }}>
-          Ant Design ©2018 Created by Ant UED
+          ©2019 All rights reserved
         </Footer>
       </Layout>
     );
