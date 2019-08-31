@@ -12,6 +12,8 @@ const IconText = ({ type, text }) => (
   </span>
 );
 
+//temporarily using https://loremflickr.com/320/240/dog for lerem photos}
+
 const Articles = (props) => {
   return (
     <List
@@ -28,7 +30,7 @@ const Articles = (props) => {
         <List.Item
           key={item.title}
           actions={[<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />, <IconText type="message" text="2" />]}
-          extra={<img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
+          extra={<img width={272} alt="logo" src="https://loremflickr.com/320/240/city" />}
         >
           <List.Item.Meta
             avatar={<Avatar src={item.avatar} />}

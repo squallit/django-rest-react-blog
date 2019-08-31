@@ -1,5 +1,6 @@
 import React from 'react';
 import { Empty, Layout, Menu, Breadcrumb, Button } from 'antd';
+import { Row, Col } from 'antd';
 import { Link, withRouter } from 'react-router-dom';
 import * as actions from '../store/actions/authActions';
 import { connect } from 'react-redux';
@@ -71,8 +72,17 @@ class CustomLayout extends React.Component {
 
 
             <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
+            <div>
+              <Row>
+                <Col span={18} push={6}>
+                  {this.props.children}
+                </Col>
+                <Col span={6} pull={18}>
+                  col-18 col-push-6
+                </Col>
+              </Row>
+            </div>
 
-              {this.props.children}
 
             </div>
 
